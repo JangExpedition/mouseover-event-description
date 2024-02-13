@@ -37,7 +37,7 @@
     <script>
         document.querySelectorAll(".menu").forEach(menu=>{
             menu.addEventListener("mouseover", (e)=>{
-                const text = e.target.childNodes[0].data;
+                const text = e.target.firstChild.data;
                 
                 if(text.indexOf("ECR") > -1){
                     const descriptionECR = document.querySelector("#descriptionECR");
