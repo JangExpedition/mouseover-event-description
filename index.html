@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mouseover Event</title>
+</head>
+<body>
+    <style>
+        ul > li > a{
+            padding: 0.5rem;
+        }
+
+        ul > div{
+            display: none;
+            background-color: #000;
+            color: #fff;
+            padding: 1rem;
+        }
+    </style>
+    <ul>
+        <div id="descriptionECR">Engineering Change Request - 설계변경사항이 발생하여 요청</div>
+        <div id="descriptionECO">Engineering Change Order - 설계변경사항을 제품에 반영하도록 지시</div>
+        <li class="menu">
+            <a>ECR 검색</a>
+        </li>
+        <li class="menu">
+            <a>ECR 등록</a>
+        </li>
+        <li class="menu">
+            <a>ECO 검색</a>
+        </li>
+        <li class="menu">
+            <a>ECO 등록</a>
+        </li>
+    </ul>
+    <script>
+        document.querySelectorAll(".menu").forEach(menu=>{
+            menu.addEventListener("mouseover", (e)=>{
+                const text = e.target.childNodes[0].data;
+                
+                if(text.indexOf("ECR") > -1){
+                    const descriptionECR = document.querySelector("#descriptionECR");
+                    const x = e.target.getBoundingClientRect().right;
+                    const y = e.target.getBoundingClientRect().top;
+                    descriptionECR.style.display = "block";
+                    descriptionECR.style.position = "fixed";
+                    descriptionECR.style.left = x + "px";
+                    descriptionECR.style.top = y + "px";
+                }else{
+                    document.querySelector("#descriptionECR").style.display = "none";
+                }
+
+                if(text.indexOf("ECO") > -1 ){
+                    const descriptionECO = document.querySelector("#descriptionECO");
+                    const x = e.target.getBoundingClientRect().right;
+                    const y = e.target.getBoundingClientRect().top;
+                    descriptionECO.style.display = "block";
+                    descriptionECO.style.position = "fixed";
+                    descriptionECO.style.left = x + "px";
+                    descriptionECO.style.top = y + "px";
+                }else{
+                    document.querySelector("#descriptionECO").style.display = "none";
+                }
+            })
+        })
+    </script>
+</body>
+</html>
